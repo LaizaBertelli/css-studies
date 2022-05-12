@@ -1,0 +1,59 @@
+:root {
+  --typewriter-speed: 4s;
+}
+
+body {
+  text-align: center;
+  margin-top: 300px;
+}
+
+b {
+  position: relative;
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+}
+
+b::before,
+b::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+b::before {
+  background: white;
+  animation: typewriter var(--typewriter-speed) steps(8) infinite;
+}
+
+b::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--typewriter-speed) steps(8) 1ms infinite,
+    blink 600ms steps(9) infinite;
+}
+
+span {
+  color: rgb(80, 80, 80);
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease var(--typewriter-speed) forwards;
+}
+
+@keyframes typewriter {
+  to { left: 100%; }
+}
+
+@keyframes blink {
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
